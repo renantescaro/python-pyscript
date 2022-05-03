@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+        <py-env>
+            - numpy
+            - matplotlib
+            - paths:
+                - /grafico.py
+        </py-env>
+    </head>
+
+<style>
+    h1 {
+        font-size: 22px;
+    }
+    #plot-5 {
+        display: flex;
+        justify-content: center
+    }
+</style>
+
+<body>
+    <div style="text-align: center;">
+        <h1>Gráfico de equação de segundo grau</h1>    
+    </div>
+    <br>
+    <div id="plot" style="display: flex; text-align: center;"></div>
+    <py-script output="plot">
+from grafico import Grafico
+
+Grafico(1, 2, 3).executar()
+    </py-script>
+</body>
+</html>
