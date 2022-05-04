@@ -9,7 +9,7 @@ class Grafico:
         self.c :int = c
 
 
-    def _gerar_valores(self) -> Tuple[List[float], List[float]]:
+    def _gerar_valores(self) -> Tuple[List[int], List[int]]:
         valores_x = []
         valores_y = []
         for x in range(-5, 5):
