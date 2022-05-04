@@ -1,7 +1,12 @@
 <html>
     <head>
-        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
         <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+        <style>
+            #plot-5 {
+                display: flex;
+                justify-content: center
+            }
+        </style>
         <py-env>
             - numpy
             - matplotlib
@@ -9,27 +14,42 @@
                 - grafico.py
         </py-env>
     </head>
-
-<style>
-    h1 {
-        font-size: 22px;
-    }
-    #plot-5 {
-        display: flex;
-        justify-content: center
-    }
-</style>
-
-<body>
-    <div style="text-align: center;">
-        <h1>Gráfico de equação de segundo grau</h1>    
-    </div>
-    <br>
-    <div id="plot" style="display: flex; text-align: center;"></div>
-    <py-script output="plot">
+    <body>
+        <div style="text-align: center;">
+            <h1>Gráfico de equação de segundo grau</h1>
+            <br>
+            <div>
+                <h2>Digite os Coeficientes referentes:</h2>
+                <div>
+                    <label for="a">A</label>
+                    <input id="a" type="number" value="1">
+                </div>
+                <div>
+                    <label for="b">B</label>
+                    <input id="b" type="number" value="1">
+                </div>
+                <div>
+                    <label for="c">C</label>
+                    <input id="c" type="number" value="1">
+                </div>
+            </div>
+            <py-button id="btnGerarGrafico" label="Gerar Gráfico">
+                def on_click(evt):
+                    gerar_grafico()
+            </py-button>
+        </div>
+        <br>
+        <div id="plot" style="display: flex; text-align: center;"></div>
+        <py-script output="plot">
 from grafico import Grafico
+from js import document
 
-Grafico(1, 2, 3).executar()
-    </py-script>
-</body>
+def gerar_grafico():
+    a = int(document.getElementById('a').value)
+    b = int(document.getElementById('b').value)
+    c = int(document.getElementById('c').value)
+    imagem = Grafico(a, b, c).executar()
+    pyscript.write('plot', imagem)
+        </py-script>
+    </body>
 </html>
